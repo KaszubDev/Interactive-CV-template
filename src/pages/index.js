@@ -1,22 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Base from '../components/base'
+import Main from '../components/main'
+import About from '../components/about'
+import {Switch, Route, BrowserRouter as Router, Link} from 'react-router-dom';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+import '../css/app.css'
+
+
+const IndexPage = () => {
+
+  return (
+    <Layout>
+      <SEO title="Strona główna" />
+      <Router>
+      <Base/>
+      <Switch>
+        <Route exact path='/' component={Main}/>
+        <Route path='/about' component={About}/>
+      </Switch>
+
+    </Router>
+    </Layout>
+  )
+
+}
 
 export default IndexPage
